@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Srushti Enterprise</title>
+	
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/examples.css" />
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="js/examples.js"></script>
+	<script type="text/javascript">
+	 $(document).ready(function() {
+
+	 		function initialization(){
+	 			$('#myContainer').fullpage({
+	                sectionsColor: ['#4A6FB1', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+	                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+	                resize: false,
+	                animateAnchor:false,
+					scrollOverflow: true,
+					autoScrolling:true,
+					responsive: 900,
+					fitSection: false,
+					menu: '#menu',
+					navigation:true,
+					continuousVertical:true,
+					paddingTop: '20px',
+	                css3: true,
+					onLeave: function(index, nextIndex, direction){
+						console.log("onLeave--" + "index: " + index + " nextIndex: " + nextIndex + " direction: " +  direction);
+					},
+	       			afterLoad: function(anchorLink, index){
+						console.log("afterLoad--" + "anchorLink: " + anchorLink + " index: " + index );
+	       			},
+					afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){
+						console.log("afterSlideLoad--" + "anchorLink: " + anchorLink + " index: " + index + " slideAnchor: " + slideAnchor + " slideIndex: " + slideIndex);
+					},
+	        		onSlideLeave: function(anchorLink, index, slideIndex, direction){
+						console.log("onSlideLeave--" + "anchorLink: " + anchorLink + " index: " + index + " slideIndex: " + slideIndex + " direction: " + direction);
+	        		},
+	        		afterRender: function(){
+						console.log("afterRender");
+	        		},
+	        		afterResize: function(){
+						console.log("afterResize");
+	        		}
+	            });
+	 		}
+
+	 		//fullPage.js initialization
+            initialization();
+
+
+			$('#moveSectionUp').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.moveSectionUp();
+			});
+
+			$('#moveSectionDown').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.moveSectionDown();
+			});
+
+			$('#moveTo').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.moveTo(2, 3);
+			});
+
+			$('#silentMoveTo').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.silentMoveTo(2);
+			});
+
+			$('#silentMoveToSlide').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.silentMoveTo(2, 3);
+			});
+
+			$('#moveSlideRight').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.moveSlideRight();
+			});
+
+			$('#moveSlideLeft').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.moveSlideLeft();
+			});
+
+			$('#setAutoScrollingFalse').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setAutoScrolling(false);
+			});
+
+			$('#setAutoScrollingTrue').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setAutoScrolling(true);
+			});
+
+			$('#setAllowScrollingFalse').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setAllowScrolling(false);
+			});
+
+			$('#setAllowScrollingTrue').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setAllowScrolling(true);
+			});
+
+			$('#setKeyboardScrollingFalse').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setKeyboardScrolling(false);
+			});
+
+			$('#setKeyboardScrollingTrue').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setKeyboardScrolling(true);
+			});
+
+			$('#setScrollingSpeed1500').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setScrollingSpeed(2500);
+			});
+
+			$('#setScrollingSpeed700').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.setScrollingSpeed(700);
+			});
+
+			$('#destroy').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.destroy('all');
+			});
+
+			$('#undestroy').click(function(e){
+				e.preventDefault();
+
+				//fullPage.js initialization
+				initialization();
+			});
+
+			$('#reBuild').click(function(e){
+				e.preventDefault();
+				$.fn.fullpage.reBuild();
+			});
+        });
+    </script>
+
+	<style>
+		#actions{
+			position:fixed;
+			top: 73px;
+			left: 30px;
+			z-index: 99999;
+		}
+		#actions a{
+			background: rgba(0,0,0,0.8);
+			padding: 7px;
+			margin: 2px;
+			color: #ccc;
+			display: inline-block;
+		}
+		#actions a:hover{
+			color: #fff;
+			background: #81A140;
+		}
+
+		/* Overwriting styles for control arrows for slides
+		* --------------------------------------- */
+		.fp-controlArrow.fp-prev {
+			left: 50px;
+		}
+		.fp-controlArrow.fp-next{
+			right: 50px;
+		}
+		
+		#header{
+		position:fixed;
+		height: 50px;
+		display:block;
+		width: 100%;
+		background: #333;
+		z-index:9;
+		text-align:center;
+		color: #f2f2f2;
+		padding: 20px 0 0 0;
+	}
+
+	#header{
+		top:0px;
+	}
+	</style>
+
+</head>
+<body>
+
+<div id="header">
+
+
+<ul id="menu">
+	<li data-menuanchor="home"><a href="#home">Home</a></li>
+	<li data-menuanchor="secondPage"><a href="#secondPage">Current Listings</a></li>
+	<li data-menuanchor="3rdPage"><a href="#3rdPage">About Us</a></li>
+	<li data-menuanchor="4thpage"><a href="#4thpage">Contact Us</a></li>
+</ul>
+</div>
+<div id="myContainer">
+
+	<div class="section" id="section0"><h1>Srushti Enterprise</h1></div>
+	<div class="section" id="section1">
+		<div class="slide"><h1>Current Listings</h1></div>
+	    <div class="slide"><div class="wrap"><h1>Property for Sale</h1></div></div>
+	    <div class="slide"><h1>Property for leasing</h1></div>
+	    <div class="slide"><h1>Slide 2.3</h1></div>
+	</div>
+	
+	<div class="section" id="section2"><h1>About Us</h1></div>
+	<div class="section" id="section3"><h1>Contact Us</h1>
+	<div>
+		<form action='/contact', name='contactus', id='contactus', method='post'>
+		<p> Name:
+        	<br>
+        <input name='name', type='text', value='', id='name'>
+       <p> Email:
+        <br>
+        <input name='email', type='text', value='', id='email'>
+       <p> Message:
+        <br>
+        <input textarea name='message', cols='40', rows='10', id='message'>
+       <p>
+        <input name='submit', type='submit', value='Send', id='submit'>
+        
+        
+	</div>
+	</div>
+</div>
+
+</body>
+</html>
